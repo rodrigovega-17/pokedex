@@ -1,7 +1,14 @@
 let typeNames = []
 
-function get_element_li (name, weight, height, base_experience) {
-    return `<li class="added-item"><img class = "img"> Pokemon: ${name} weight:<span class="pokeWeight"> ${weight}</span> height: ${height} base experience ${base_experience} types: ${typeNames}  <button class="remove-item">remove</button></li>`
+function get_element_li (id, name, weight, height, base_experience) {
+    return `<li class="added-item"><img class = "img"> 
+            Pokemon: ${name} 
+            ID: ${id} 
+            Weight:<span class="pokeWeight"> ${weight}</span> 
+            Height: ${height} 
+            Base experience ${base_experience} 
+            Types: ${typeNames}  
+            <button class="remove-item">remove</button></li>`
 }
 
 let total = 0;
@@ -18,9 +25,9 @@ function Recalculate () {
     document.getElementById("total").innerHTML = `Total: ${total}`;
 }
 
-let add_item_to_list_with_template = (pokeName, pokeWeight, photo, height,base_experience) => {
+let add_item_to_list_with_template = (pokeId, pokeName, pokeWeight, photo, height,base_experience) => {
     //let itemValue = document.querySelector("#item-value").value.trim();
-    let liVal = get_element_li(pokeName, pokeWeight, height, base_experience);
+    let liVal = get_element_li(pokeId, pokeName, pokeWeight, height, base_experience);
     total += Number(pokeWeight);
     document.getElementById("total").innerHTML = `Total: ${total}`;
     let list = document.getElementById("list");
@@ -43,19 +50,20 @@ let thenable_handle_for_the_result_of_the_pokemon_request = (result) => {
         console.log(result.data.types[i].type.name)
         typeNames.push(result.data.types[i].type.name)
     }
-    add_item_to_list_with_template(result.data.species.name, result.data.weight, result.data.sprites.front_default,result.data.height,result.data.base_experience)
-    //console.log(result.data)
-    //console.log(result.data.height)
-    //console.log(result.data.base_experience)
+    add_item_to_list_with_template( result.data.id, 
+                                    result.data.species.name, 
+                                    result.data.weight, 
+                                    result.data.sprites.front_default,
+                                    result.data.height,
+                                    result.data.base_experience)
 }
-
+  
 let catchable_handle_for_the_error_of_the_pokemon_request = (err) => {
     //handle here the pokemon error from the request
     alert("POKEMON NOT FOUND!!!")
 }
 
 let remove_item  = (/*node_to_remove*/) => {
-
     return (event)=>{
         let node_to_remove = event.target;
         node_to_remove.parentNode.parentNode.remove();
