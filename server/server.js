@@ -1,13 +1,16 @@
 const express = require('express')
 const axios = require("axios")
 const app = express()
+const cors = require('cors') 
 app.use(express.json())
-
+app.use(cors())
 let savedPokemon = {};
+
+
   
 app.get('/getpokemon/:pokeName', function (req, res) {
     let pokeName = req.params.pokeName;
-    console.log(pokeName)
+    //console.log(pokeName)
     if (pokeName.length == 0){
         res.send("Please get a name");
     }
@@ -16,15 +19,18 @@ app.get('/getpokemon/:pokeName', function (req, res) {
     }
 
     axios
-    .get('https://pokeapi.co/api/v2/pokemon/caterpie' )
+    .get('https://pokeapi.co/api/v2/pokemon/' + pokeName)
     .then(function (response) {
-        res.send(response);
-        savedPokemon[pokeName] = response;
-        console.log("Inside then")
+        let pokemon = response.data
+        //console.log(pokemon);
+        savedPokemon[pokeName] = pokemon;
+        res.send(savedPokemon[pokeName]);
+        //console.log("Inside then");
     })
     .catch(function (error) {
-        res.send("error");
-        console.log("Inside catch")
+        res.send(error);
+        //console.log(error);
+        //console.log("Inside catch");
     });
 })
   

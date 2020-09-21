@@ -11,25 +11,9 @@ function get_element_li (id, name, weight, height, base_experience) {
             <button class="remove-item">remove</button></li>`
 }
 
-let total = 0;
-
-function Recalculate () {
-    total = 0;
-    let List = document.getElementById("list");
-    let pokemons = List.getElementsByClassName("added-item")
-    for (var i = 0; i < pokemons.length; i++) {
-        let weight = pokemons[i].getElementsByClassName("pokeWeight")[0];
-        let pokeWeight = Number(weight.innerHTML);
-        total += pokeWeight;
-    }
-    document.getElementById("total").innerHTML = `Total: ${total}`;
-}
-
 let add_item_to_list_with_template = (pokeId, pokeName, pokeWeight, photo, height,base_experience) => {
     //let itemValue = document.querySelector("#item-value").value.trim();
     let liVal = get_element_li(pokeId, pokeName, pokeWeight, height, base_experience);
-    total += Number(pokeWeight);
-    document.getElementById("total").innerHTML = `Total: ${total}`;
     let list = document.getElementById("list");
     let element = document.createElement("li");
     element.innerHTML = liVal;
@@ -46,8 +30,9 @@ let add_item_to_list_with_template = (pokeId, pokeName, pokeWeight, photo, heigh
 
 let thenable_handle_for_the_result_of_the_pokemon_request = (result) => {
     //handle here the pokemon from the request+
+    typeNames = [];
     for(var i=0; i<result.data.types.length;i++){
-        console.log(result.data.types[i].type.name)
+        //console.log(result.data.types[i].type.name)
         typeNames.push(result.data.types[i].type.name)
     }
     add_item_to_list_with_template( result.data.id, 
@@ -67,7 +52,6 @@ let remove_item  = (/*node_to_remove*/) => {
     return (event)=>{
         let node_to_remove = event.target;
         node_to_remove.parentNode.parentNode.remove();
-        Recalculate();
     }
 }
 
