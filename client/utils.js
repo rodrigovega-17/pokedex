@@ -47,7 +47,6 @@ let add_item_to_list_with_template = (pokeId, pokeName, pokeWeight, photo, heigh
 let thenable_handle_for_the_result_of_the_pokemon_request = (result) => {
     //handle here the pokemon from the request+
     for(var i=0; i<result.data.types.length;i++){
-        console.log(result.data.types[i].type.name)
         typeNames.push(result.data.types[i].type.name)
     }
     add_item_to_list_with_template( result.data.id, 

@@ -1,18 +1,18 @@
 {
-    "name": "PokemonWeightCalculator",
+    "name": "Pokedex",
     "version": "1.0.0",
     "description": "",
-    "main": "src.js",
+    "main": "test.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node ./server.js"
+        "start": "node ./src.js"
     },
     
     "repository": {
         "type": "git",
         "url": "git+https://github.com/oaguilar738/EP1_WEB.git"
     },
-    "author": "Olaf Aguilar",
+    "author": "",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/oaguilar738/EP1_WEB/issues"
