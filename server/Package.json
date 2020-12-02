@@ -6,22 +6,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/oaguilar738/EP1_WEB.git"
-  },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/oaguilar738/EP1_WEB/issues"
-  },
-  "homepage": "https://github.com/oaguilar738/EP1_WEB#readme",
-  "dependencies": {
-    "axios": "^0.20.0",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1"
-  },
-  "devDependencies": {}
+  }
 }

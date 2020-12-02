@@ -2,16 +2,15 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pokedex</title>
-        <script>
-            
-        </script>
+        <meta name="viewport" content="width=device-width">
+        <title>Pokedex Ro</title>
+        <link rel="stylesheet" href="styles.css">
+
     </head>
     <body>
-        <div id="container">
-            Pokemon: <input type="text" id="pokeName">
-            <button id="add-item"> add</button>
+        <div id="container" class="center">
+            <h3>POKEDEX:</h3> <input type="text" onfocus="this.value=''" value="Nombre de Pokemon" id="pokemonName">
+            <button id="add-item"> añadir</button>
         </div>
         <ul id = "list" class="items">
             
@@ -19,6 +18,11 @@
         <div id="total"></div>
         <div id="error"></div>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="./utils.js"></script>
+        <script src="./functions.js"></script>
+        <script>
+            function clear(){
+                document.getElementById('pokemonName').value = ''
+                }
+        </script>
     </body>
 </html>
