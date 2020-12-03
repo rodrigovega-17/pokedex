@@ -72,12 +72,8 @@ let get_pokemon_data = () => {
         axios
         .get('http://localhost:3000/getpokemon/'+pokemonName,{
         })
-        .then(function (response) {
-            thenable_handle_for_the_result_of_the_pokemon_request(response);
-        })
-        .catch(function (error) {
-            catchable_handle_for_the_error_of_the_pokemon_request(error);
-        })
+        .then(thenable_handle_for_the_result_of_the_pokemon_request)
+        .catch(catchable_handle_for_the_error_of_the_pokemon_request)
     }
 }
 
